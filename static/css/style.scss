@@ -1,0 +1,131 @@
+/* CSS Reset */
+@import url(https://meyerweb.com/eric/tools/css/reset/reset.css);
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+}
+
+figure.icon {
+  $size: 24px;
+  height: $size;
+
+  svg {
+    height: $size;
+  }
+
+  figcaption {
+    display: none;
+  }
+}
+
+// Colors
+$color__yellow: #fcba03;
+
+// Breakpoints
+$mobile: 480px;
+$tablet: 768px;
+$small-screen: 1024px;
+$medium-screen: 1200px;
+
+:root {
+  font-size: 10px;
+}
+
+body > header {
+  width: 100%;
+  background-color: $color__yellow;
+  border-bottom: 2px solid black;
+
+  div.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid black;
+
+    h1 {
+      font-size: 3.4rem;
+      font-family: "Open Sans", "Segoe UI", Roboto, Ubuntu, "Helvetica Neue",
+        sans-serif;
+      font-weight: 900;
+      font-variation-settings: "wght" 900;
+      text-transform: uppercase;
+    }
+
+    button.new-todo {
+      //background-color: rgba($color: #000, $alpha: 0.15);
+      background-color: transparent;
+      border: none;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border-radius: 50%;
+      border: 1px solid black;
+      font-family: "Open Sans", "Segoe UI", Roboto, Ubuntu, "Helvetica Neue",
+        sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      cursor: pointer;
+      transition: 0.1s ease background-color;
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: rgba($color: #000, $alpha: 0.15);
+      }
+
+      @media screen and (min-width: $tablet) {
+        width: initial;
+        padding: 0 10px;
+        border-radius: 100px;
+      }
+
+      span {
+        display: none;
+
+        @media screen and (min-width: $tablet) {
+          display: initial;
+          margin-left: 4px;
+        }
+      }
+    }
+  }
+
+  section.tags {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 4px 10px;
+
+    h2 {
+      font-family: "Open Sans", "Segoe UI", Roboto, Ubuntu, "Helvetica Neue";
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    ul {
+      display: flex;
+      overflow: auto;
+      padding-bottom: 4px;
+      flex-flow: row nowrap;
+      width: 100%;
+
+      li {
+        margin-right: 4px;
+
+        &.title {
+          position: sticky;
+          left: 0;
+          padding-right: 10px;
+          background-color: $color__yellow;
+        }
+      }
+    }
+  }
+}
