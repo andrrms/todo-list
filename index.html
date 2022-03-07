@@ -10,54 +10,63 @@
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Open+Sans:wght@100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/style.css">
 
-  <title>To-Do || Lista de Afazeres</title>
+  <title>Simply Note || Lista de Afazeres</title>
 </head>
 <body>
   <header>
     <div class="container">
-      <h1>To-Do</h1>
-      <button class="new-todo">
+      <h1>Simply Note</h1>
+      <button class="new-todo" id="new-todo">
         <figure class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-plus" viewBox="0 0 24 24">
             <path d="M12 5v14M5 12h14"/>
           </svg>
-          <figcaption>Sinal de adição</figcaption>
+          <figcaption>Adicionar nota</figcaption>
         </figure>
-        <span>Tarefa</span>
+        <span>Nota</span>
       </button>
     </div>
     <section class="tags">
-      <ul>
-        <li class="title">
-          <h2>Tags:</h2>
-        </li>
-        <li>
-          <button>#tag1</button>
-        </li>
-        <li>
-          <button>#thisisahashtag</button>
-        </li>
-        <li>
-          <button>#finances</button>
-        </li>
-        <li>
-          <button>#idontknow</button>
-        </li>
-        <li>
-          <button>#tag1</button>
-        </li>
-        <li>
-          <button>#thisisahashtag</button>
-        </li>
-        <li>
-          <button>#finances</button>
-        </li>
-        <li>
-          <button>#idontknow</button>
-        </li>
+      <h2>Tags:</h2>
+      <ul id="tag-list">
+        <!--
+          Example of tag structure:
+          <li>
+            <button>tag1</button>
+          </li>
+        -->
       </ul>
     </section>
   </header>
-  <main></main>
+
+  <main>
+    <form id="compose-form" action="#" class="collapsed">
+      <textarea name="compose" id="compose-item" placeholder="Escreva aqui..."></textarea>
+      <button id="composeForm__button">Adicionar</button>
+    </form>
+    <section>
+      <ul id="note-list">
+        <!--
+          Example of note structure:
+          <li>
+            <article class="green">
+              <h3>Anotação</h3>
+              <p>Anotações podem ter um título e várias linhas <strong>#feature</strong></p>
+              <p>tags: <strong>#tag1</strong> <strong>#finances</strong></p>
+            </article>
+          </li>
+          Example of note with title only:
+          <li>
+            <article class="blue">
+              <h3>Se houver apenas uma linha, esta será tratada como <strong>#título</strong></h3>
+            </article>
+          </li>
+        -->
+      </ul>
+    </section>
+  </main>
+
+  <script src="static/js/mockData.js"></script>
+  <script src="static/js/script.js"></script>
 </body>
 </html>

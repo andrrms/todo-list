@@ -26,6 +26,8 @@ body > header {
   width: 100%;
   background-color: #fcba03;
   border-bottom: 2px solid black;
+  position: sticky;
+  top: 0;
 }
 body > header div.container {
   display: flex;
@@ -53,11 +55,18 @@ body > header div.container button.new-todo {
   font-weight: 600;
   font-size: 20px;
   cursor: pointer;
-  transition: 0.1s ease background-color;
+  transition: 0.1s ease;
+  transition-property: background-color;
   outline: none;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+body > header div.container button.new-todo figure {
+  transition: 0.1s ease transform;
+}
+body > header div.container button.new-todo.opened figure {
+  transform: rotate(45deg);
 }
 body > header div.container button.new-todo:hover {
   background-color: rgba(0, 0, 0, 0.15);
@@ -80,9 +89,10 @@ body > header div.container button.new-todo span {
 }
 body > header section.tags {
   display: flex;
+  gap: 10px;
   align-items: center;
   width: 100%;
-  padding: 4px 10px;
+  padding: 4px 0px 4px 10px;
 }
 body > header section.tags h2 {
   font-family: "Open Sans", "Segoe UI", Roboto, Ubuntu, "Helvetica Neue";
@@ -91,19 +101,132 @@ body > header section.tags h2 {
 }
 body > header section.tags ul {
   display: flex;
+  gap: 4px;
   overflow: auto;
-  padding-bottom: 4px;
   flex-flow: row nowrap;
   width: 100%;
 }
-body > header section.tags ul li {
-  margin-right: 4px;
+body > header section.tags ul button {
+  background-color: transparent;
+  color: #000;
+  border: 1px solid black;
+  border-radius: 50px;
+  font-family: "Open Sans", "Segoe UI", Roboto, Ubuntu, "Helvetica Neue";
+  font-size: 1.5rem;
+  transition: 0.1s ease background-color;
+  cursor: pointer;
 }
-body > header section.tags ul li.title {
-  position: sticky;
-  left: 0;
-  padding-right: 10px;
-  background-color: #fcba03;
+body > header section.tags ul button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+body > header section.tags ul button::before {
+  content: "#";
+  font-weight: 600;
+  margin-right: 1px;
+}
+
+body > main {
+  display: flex;
+  flex-direction: column;
+}
+body > main form {
+  background-color: rgba(252, 186, 3, 0.5);
+  display: flex;
+  flex-direction: column;
+  border-bottom: 3px solid black;
+  height: 150px;
+  transition: 0.2s ease;
+  transition-property: display;
+  transition-property: height;
+}
+body > main form:focus-within {
+  height: 250px;
+}
+body > main form.collapsed {
+  height: 0;
+  display: none;
+}
+body > main form textarea {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  flex: 1;
+  font-family: "Open Sans", "Segoe UI", Roboto, Ubuntu, "Helvetica Neue";
+  font-size: 1.75rem;
+  padding: 10px;
+  resize: vertical;
+}
+body > main form textarea::placeholder {
+  color: rgba(0, 0, 0, 0.55);
+}
+body > main form button {
+  margin: 8px;
+  font-family: "Open Sans", "Segoe UI", Roboto, Ubuntu, "Helvetica Neue";
+  font-size: 2rem;
+  border: 1px solid black;
+  border-radius: 50px;
+  background-color: transparent;
+  transition: 0.1s ease background-color;
+  cursor: pointer;
+}
+body > main form button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+body > main section {
+  margin-top: 10px;
+}
+body > main section ul {
+  display: flex;
+  flex-direction: column;
+}
+body > main section ul li {
+  margin: 0 auto;
+  margin-bottom: 10px;
+  width: 95%;
+}
+body > main section ul li article {
+  background-color: #e6e6e6;
+  color: #000;
+  font-size: 1.5rem;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 6px;
+}
+body > main section ul li article.green {
+  background-color: #53542a;
+  color: #fff;
+}
+body > main section ul li article.red {
+  background-color: #dd7349;
+  color: #000;
+}
+body > main section ul li article.blue {
+  background-color: #5ea0ac;
+  color: #fff;
+}
+body > main section ul li article.yellow {
+  background-color: #d89441;
+  color: #000;
+}
+body > main section ul li article h3 {
+  font-family: "Open Sans", "Segoe UI", Roboto, Ubuntu, "Helvetica Neue";
+  font-size: 1.85rem;
+  font-weight: 600;
+}
+body > main section ul li article h3 strong {
+  font-weight: 900;
+  text-decoration: underline;
+}
+body > main section ul li article p {
+  font-family: "Open Sans", "Segoe UI", Roboto, Ubuntu, "Helvetica Neue";
+  margin-top: 4px;
+}
+body > main section ul li article p strong {
+  font-weight: 700;
+  text-decoration: underline;
+}
+body > main section ul li article p:nth-child(2) {
+  margin-top: 8px;
 }
 
 /*# sourceMappingURL=style.css.map */
