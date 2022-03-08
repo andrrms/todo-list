@@ -205,7 +205,7 @@ body > main form section {
   display: flex;
   gap: 10px;
   padding: 0 8px;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
 body > main form section input[type=radio] {
   flex: 1;
@@ -253,6 +253,14 @@ body > main form section input[type=radio]#select-color__yellow {
 }
 body > main form section input[type=radio]#select-color__blue {
   background-color: #5ea0ac;
+}
+body > main form #hint {
+  font-family: "Open Sans", "Segoe UI", Roboto, Ubuntu, "Helvetica Neue";
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 2px;
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
 }
 body > main section {
   margin-top: 10px;
