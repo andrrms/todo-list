@@ -163,7 +163,7 @@ function composeNote(color) {
   const text = composeTextarea.value.split(/\n/g);
 
   const data = {
-    id: 0,
+    id: mockData[mockData.length - 1].id + 1,
     title: "",
     body: [],
     color,
@@ -172,7 +172,6 @@ function composeNote(color) {
   };
 
   if (text.length > 1) {
-    id = mockData.length;
     data.title = text[0];
 
     // Parse tags in title
@@ -191,7 +190,6 @@ function composeNote(color) {
       data.body.push(text[i]);
     }
   } else {
-    id = mockData.length;
     data.title = text[0];
 
     // Parse tags in title
