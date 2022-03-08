@@ -113,30 +113,6 @@ function updateNotesList(selectedNotes) {
   }
 }
 
-/* function updateTagsList() {
-  tagList.innerHTML = null;
-  const finalTags = new Set();
-
-  mockData.forEach((note) => {
-    note.tags.forEach((noteTag) => {
-      finalTags.add(noteTag.toLowerCase());
-    });
-  });
-
-  Array.from(finalTags).forEach((tag) => {
-    const liTag = document.createElement("li");
-    const buttonTag = document.createElement("button");
-    buttonTag.innerText = tag;
-    buttonTag.onclick = function (e) {
-      e.preventDefault();
-      alert(`Ainda não adicionei o filtro por tags. Tag selecionada: #${tag}`);
-    };
-    liTag.appendChild(buttonTag);
-
-    tagList.appendChild(liTag);
-  });
-} */
-
 function updateTagsList(selectedTags) {
   tagList.innerText = null;
   const finalTags = new Set();
@@ -178,64 +154,6 @@ addNoteBtn.onclick = function (e) {
     composeTextarea.focus();
   } else closeComposeArea();
 };
-
-/**
- * @param {MouseEvent} e event
- */
-/* composeAddBtn.onclick = function (e) {
-  e.preventDefault();
-  if (!composeTextarea.value) return;
-  const text = composeTextarea.value.split(/\n/g);
-
-  const data = {
-    id: 0,
-    title: "",
-    body: [],
-    color: "green",
-    done: false,
-    tags: [],
-  };
-
-  console.log(text.length);
-  if (text.length > 1) {
-    id = mockData.length;
-    data.title = text[0];
-
-    // Parse tags in title
-    const parseTitleTags = text[0]
-      .split(" ")
-      .filter((w) => w.startsWith("#"))
-      .map((w) => w.slice(1));
-    if (parseTitleTags) data.tags.push(...parseTitleTags);
-    // Parse tags in body
-    for (let i = 1; i < text.length; i++) {
-      const parseTags = text[i]
-        .split(" ")
-        .filter((w) => w.startsWith("#"))
-        .map((w) => w.slice(1));
-      if (parseTags) data.tags.push(...parseTags);
-      data.body.push(text[i]);
-    }
-  } else {
-    id = mockData.length;
-    data.title = text[0];
-
-    // Parse tags in title
-    const parseTags = text[0]
-      .split(" ")
-      .filter((w) => w.startsWith("#"))
-      .map((w) => w.slice(1));
-    if (parseTags) data.tags.push(...parseTags);
-
-    delete data.body;
-  }
-
-  mockData.push(data);
-
-  closeComposeArea();
-  updateNotesList();
-  updateTagsList();
-}; */
 
 /**
  * @param {"green"|"red"|"yellow"|"blue"} color Cor da nota
