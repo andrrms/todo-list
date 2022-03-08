@@ -173,8 +173,25 @@ body > main {
     border-bottom: 3px solid black;
     height: 150px;
     transition: 0.2s ease;
-    transition-property: display;
-    transition-property: height;
+    transition-property: height, display, background-color;
+
+    &.color-selected {
+      &.green {
+        background-color: rgba($color: $color-note__green, $alpha: 0.75);
+      }
+
+      &.red {
+        background-color: rgba($color: $color-note__red, $alpha: 0.6);
+      }
+
+      &.yellow {
+        background-color: rgba($color: $color-note__yellow, $alpha: 0.75);
+      }
+
+      &.blue {
+        background-color: rgba($color: $color-note__blue, $alpha: 0.5);
+      }
+    }
 
     &:focus-within {
       height: 250px;
@@ -204,7 +221,7 @@ body > main {
       margin: 8px;
       font-family: "Open Sans", "Segoe UI", Roboto, Ubuntu, "Helvetica Neue";
       font-size: 2rem;
-      border: 1px solid black;
+      border: 2px solid black;
       border-radius: 50px;
       background-color: transparent;
       transition: 0.1s ease background-color;
@@ -212,6 +229,70 @@ body > main {
 
       &:hover {
         background-color: rgba($color: #000, $alpha: 0.1);
+      }
+    }
+
+    section {
+      width: 100%;
+      display: flex;
+      gap: 10px;
+      padding: 0 8px;
+      margin-bottom: 10px;
+
+      input[type="radio"] {
+        flex: 1;
+        margin: 0;
+        min-width: 10%;
+        height: 30px;
+        border: 2px solid black;
+        border-radius: 100px;
+        appearance: none;
+        transition: 0.25s ease;
+        transition-property: filter, flex;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        cursor: pointer;
+
+        &:hover {
+          filter: brightness(110%);
+        }
+
+        &:checked {
+          flex: 100;
+          box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.25);
+
+          &::after {
+            opacity: 1;
+          }
+        }
+
+        &::after {
+          content: "ADICIONAR";
+          font-family: "Open Sans", "Segoe UI", Roboto, Ubuntu, "Helvetica Neue";
+          font-size: 2rem;
+          color: #000;
+          opacity: 0;
+          transition: 0.1s ease-out;
+        }
+
+        &#select-color__green {
+          background-color: #53542a;
+        }
+
+        &#select-color__red {
+          background-color: #dd7349;
+        }
+
+        &#select-color__yellow {
+          background-color: #d89441;
+        }
+
+        &#select-color__blue {
+          background-color: #5ea0ac;
+        }
       }
     }
   }
