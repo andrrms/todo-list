@@ -4,11 +4,12 @@ const mockData = [
     title: "Adicionando sua primeira nota...",
     body: [
       'Para adicionar uma #nota, clique no botão com o símbolo de "+".',
-      'Vai aparecer um campo. Basta digitar nele a nota que você quer criar e, em seguida, clicar no botão escrito "Adicionar".',
+      "Digite a nota que quer escrever no campo que irá aparecer. A nota pode ter #uma ou #várias linhas, e tags também.",
+      "Quando estiver pronto, escolha uma das quatro cores disponíveis e clique na cor novamente para adicionar a nota.",
     ],
     color: "",
     done: false,
     // Array of parsed tags based on title and body entries
-    tags: ["nota"],
+    tags: ["nota", "uma", "várias"],
   },
 ];
