@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* CSS Reset */
 @import url(https://meyerweb.com/eric/tools/css/reset/reset.css);
 * {
@@ -101,6 +102,7 @@ body > header section.tags h2 {
 }
 body > header section.tags ul {
   display: flex;
+  align-items: center;
   gap: 4px;
   overflow: auto;
   flex-flow: row nowrap;
@@ -123,6 +125,15 @@ body > header section.tags ul button::before {
   content: "#";
   font-weight: 600;
   margin-right: 1px;
+}
+body > header section.tags ul button.selected {
+  font-weight: 700;
+  border: 2px solid black;
+}
+body > header section.tags ul button.selected::before {
+  content: "×";
+  font-weight: 800;
+  margin-right: 2px;
 }
 
 body > main {

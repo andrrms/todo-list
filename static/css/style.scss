@@ -133,6 +133,7 @@ body > header {
 
     ul {
       display: flex;
+      align-items: center;
       gap: 4px;
       overflow: auto;
       flex-flow: row nowrap;
@@ -156,6 +157,17 @@ body > header {
           content: "#";
           font-weight: 600;
           margin-right: 1px;
+        }
+
+        &.selected {
+          font-weight: 700;
+          border: 2px solid black;
+
+          &::before {
+            content: "×";
+            font-weight: 800;
+            margin-right: 2px;
+          }
         }
       }
     }
