@@ -23,11 +23,17 @@ figure.icon figcaption {
   font-size: 10px;
 }
 
+button,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body > header {
   width: 100%;
   background-color: #fcba03;
   border-bottom: 2px solid black;
   position: sticky;
+  z-index: 3;
   top: 0;
 }
 body > header div.container {
