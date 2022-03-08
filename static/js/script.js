@@ -7,6 +7,16 @@ const tagList = document.getElementById("tag-list");
 const composeForm = document.getElementById("compose-form");
 const composeTextarea = document.getElementById("compose-item");
 
+function getNotesByTag(tag) {
+  return mockData.filter((note) => {
+    return (
+      note.tags.find((noteTag) => {
+        return noteTag === tag;
+      }) && true
+    );
+  });
+}
+
 function buildNoteElement(data) {
   const listItem = document.createElement("li");
   const artItem = document.createElement("article");
@@ -48,14 +58,31 @@ function buildNoteElement(data) {
   return listItem;
 }
 
-function buildTagElement(note) {
+function buildTagElement(tag) {
   const tagLi = document.createElement("li");
   const tagBtn = document.createElement("button");
 
-  tagBtn.innerText = note;
+  tagBtn.innerText = tag;
   tagBtn.onclick = (e) => {
     e.preventDefault();
-    alert(`Tag selecionada: #${note}`);
+
+    if (e.target.classList.contains("selected")) {
+      updateNotesList();
+      updateTagsList();
+    } else {
+      const notes = getNotesByTag(tag);
+      const selectedTags = new Set();
+
+      document.querySelectorAll("ul#tag-list button.selected").forEach((el) => {
+        selectedTags.add(el.textContent);
+      });
+
+      updateNotesList(notes);
+      updateTagsList([tag]);
+      document
+        .querySelectorAll("ul#tag-list button")[0]
+        .classList?.add("selected");
+    }
   };
 
   tagLi.appendChild(tagBtn);
@@ -72,10 +99,17 @@ function closeComposeArea() {
   addNoteBtn.classList.remove("opened");
 }
 
-function updateNotesList() {
+function updateNotesList(selectedNotes) {
   noteListUl.innerHTML = null;
-  for (let i = mockData.length - 1; i >= 0; i--) {
-    noteListUl.appendChild(buildNoteElement(mockData[i]));
+
+  if (selectedNotes) {
+    for (let i = selectedNotes.length - 1; i >= 0; i--) {
+      noteListUl.appendChild(buildNoteElement(selectedNotes[i]));
+    }
+  } else {
+    for (let i = mockData.length - 1; i >= 0; i--) {
+      noteListUl.appendChild(buildNoteElement(mockData[i]));
+    }
   }
 }
 
@@ -103,16 +137,6 @@ function updateNotesList() {
   });
 } */
 
-function getNotesByTag(tag) {
-  return mockData.filter((note) => {
-    return (
-      note.tags.find((noteTag) => {
-        return noteTag === tag;
-      }) && true
-    );
-  });
-}
-
 function updateTagsList(selectedTags) {
   tagList.innerText = null;
   const finalTags = new Set();
@@ -125,6 +149,16 @@ function updateTagsList(selectedTags) {
     });
   } else {
     // Criar filtro para mostrar tags selecionadas
+    selectedTags.forEach((tag) => {
+      getNotesByTag(tag).forEach((note) => {
+        // Primeiro adiciona as tags selecionadas...
+        note.tags.forEach(
+          (noteTag) => tag === noteTag && finalTags.add(noteTag)
+        );
+        // ...depois as demais tags
+        note.tags.forEach((noteTag) => finalTags.add(noteTag));
+      });
+    });
   }
 
   Array.from(finalTags).forEach((tag) => {
@@ -219,7 +253,6 @@ function composeNote(color) {
     tags: [],
   };
 
-  console.log(text.length);
   if (text.length > 1) {
     id = mockData.length;
     data.title = text[0];
