@@ -177,15 +177,15 @@ function composeNote(color) {
     // Parse tags in title
     const parseTitleTags = text[0]
       .split(" ")
-      .filter((w) => w.startsWith("#"))
-      .map((w) => w.slice(1));
+      .filter((w) => /#[a-zA-Z0-9\-\_]+/.test(w))
+      .map((w) => w.match(/#[a-zA-Z0-9\-\_]+/)[0].slice(1));
     if (parseTitleTags) data.tags.push(...parseTitleTags);
     // Parse tags in body
     for (let i = 1; i < text.length; i++) {
       const parseTags = text[i]
         .split(" ")
-        .filter((w) => w.startsWith("#"))
-        .map((w) => w.slice(1));
+        .filter((w) => /#[a-zA-Z0-9\-\_]+/.test(w))
+        .map((w) => w.match(/#[a-zA-Z0-9\-\_]+/)[0].slice(1));
       if (parseTags) data.tags.push(...parseTags);
       data.body.push(text[i]);
     }
@@ -195,8 +195,8 @@ function composeNote(color) {
     // Parse tags in title
     const parseTags = text[0]
       .split(" ")
-      .filter((w) => w.startsWith("#"))
-      .map((w) => w.slice(1));
+      .filter((w) => /#[a-zA-Z0-9\-\_]+/.test(w))
+      .map((w) => w.match(/#[a-zA-Z0-9\-\_]+/)[0].slice(1));
     if (parseTags) data.tags.push(...parseTags);
 
     delete data.body;
